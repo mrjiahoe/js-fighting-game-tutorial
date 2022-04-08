@@ -26,6 +26,7 @@ class Sprite {
 		};
 		this.color = color;
 		this.isAttacking;
+		this.health = 100;
 	}
 
 	draw() {
@@ -59,9 +60,9 @@ class Sprite {
 
 	attack() {
 		this.isAttacking = true;
-		// setInterval(() => {
-		// 	this.isAttacking = false;
-		// }, 100);
+		setInterval(() => {
+			this.isAttacking = false;
+		}, 10);
 	}
 }
 
@@ -161,7 +162,8 @@ function animate() {
 		player.isAttacking
 	) {
 		player.isAttacking = false;
-		console.log("player attacked");
+		enemy.health -= 20;
+		document.querySelector("#enemyHealth").style.width = enemy.health + "%";
 	}
 
 	if (
@@ -172,7 +174,8 @@ function animate() {
 		enemy.isAttacking
 	) {
 		enemy.isAttacking = false;
-		console.log("enemy attacked");
+		player.health -= 20;
+		document.querySelector("#playerHealth").style.width = player.health + "%";
 	}
 }
 
