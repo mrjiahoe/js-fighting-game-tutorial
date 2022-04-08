@@ -33,15 +33,15 @@ class Sprite {
 		c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
 		// attack box
-		// if (this.isAttacking) {
-		c.fillStyle = "green";
-		c.fillRect(
-			this.attackBox.position.x,
-			this.attackBox.position.y,
-			this.attackBox.width,
-			this.attackBox.height
-		);
-		// }
+		if (this.isAttacking) {
+			c.fillStyle = "green";
+			c.fillRect(
+				this.attackBox.position.x,
+				this.attackBox.position.y,
+				this.attackBox.width,
+				this.attackBox.height
+			);
+		}
 	}
 
 	update() {
@@ -59,9 +59,9 @@ class Sprite {
 
 	attack() {
 		this.isAttacking = true;
-		setInterval(() => {
-			this.isAttacking = false;
-		}, 100);
+		// setInterval(() => {
+		// 	this.isAttacking = false;
+		// }, 100);
 	}
 }
 
@@ -192,7 +192,7 @@ window.addEventListener("keydown", (event) => {
 		case "w":
 			player.velocity.y = -20;
 			break;
-		case " ":
+		case "s":
 			player.attack();
 			break;
 
